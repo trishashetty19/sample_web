@@ -30,7 +30,7 @@ function addStudentToTable(student) {
         <td>${student.name}</td>
         <td>${student.usn}</td>
         <td><input type="checkbox"></td>
-        <td><button class="delete-btn" onclick="deleteStudent('${student.usn}')">Delete</button></td>
+        <td><button class="delete-btn" onclick="deleteStudent('${student.usn}', this)">Delete</button></td>
     `;
     studentList.appendChild(row);
 }
@@ -47,10 +47,13 @@ async function loadStudents() {
     });
 }
 
-// Delete a student and refresh the list
-async function deleteStudent(usn) {
+// Delete a student and remove the row directly
+async function deleteStudent(usn, button) {
     await fetch(`/deleteStudent/${usn}`, { method: 'DELETE' });
-    loadStudents();
+
+    // Remove the row from the table directly
+    const row = button.parentElement.parentElement;
+    row.remove();
 }
 
 // Load students on page load
