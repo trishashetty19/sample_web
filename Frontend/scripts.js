@@ -21,14 +21,27 @@ document.getElementById('submit-student-btn').addEventListener('click', async ()
         document.getElementById('student-usn').value = '';
         document.getElementById('student-form').classList.add('hidden');
 
-        // Reload student list
-        loadStudents();
+        // Add the student to the table directly
+        addStudentToTable({ name, usn });
     } else {
         alert("Please fill out both fields.");
     }
 });
 
-// Function to load and display students
+// Function to add a student to the table directly
+function addStudentToTable(student) {
+    const studentList = document.getElementById('student-list');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${student.name}</td>
+        <td>${student.usn}</td>
+        <td><input type="checkbox"></td>
+        <td><button class="delete-btn" onclick="deleteStudent('${student.usn}')">Delete</button></td>
+    `;
+    studentList.appendChild(row);
+}
+
+// Load students from the server and display them
 async function loadStudents() {
     const response = await fetch('/students');
     const students = await response.json();
@@ -36,14 +49,7 @@ async function loadStudents() {
     studentList.innerHTML = '';
 
     students.forEach(student => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${student.name}</td>
-            <td>${student.usn}</td>
-            <td><input type="checkbox"></td>
-            <td><button class="delete-btn" onclick="deleteStudent('${student.usn}')">Delete</button></td>
-        `;
-        studentList.appendChild(row);
+        addStudentToTable(student);
     });
 }
 
