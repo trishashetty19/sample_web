@@ -9,11 +9,14 @@
 <body>
     <h1>Teachers Portal - Attendance</h1>
 
-    <!-- Add New Student Button -->
-    <button id="add-student-btn">Add New Student</button>
+    <!-- Date Selection -->
+    <div id="date-selector">
+        <label for="attendance-date">Select Attendance Date: </label>
+        <input type="date" id="attendance-date">
+    </div>
 
-    <!-- Form for Student Details (Hidden by default) -->
-    <div id="student-form" class="hidden">
+    <!-- Form for Student Details -->
+    <div id="student-form">
         <input type="text" id="student-name" placeholder="Student Name" required>
         <input type="text" id="student-usn" placeholder="USN" required>
         <button id="submit-student-btn">Add Student</button>
@@ -26,7 +29,7 @@
                 <th>Student Name</th>
                 <th>USN</th>
                 <th>Present</th>
-                <th>Date <input type="date" id="attendance-date"></th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody id="student-list">

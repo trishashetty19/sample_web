@@ -1,8 +1,3 @@
-// Toggle the display of the form when "Add New Student" is clicked
-document.getElementById('add-student-btn').addEventListener('click', () => {
-    document.getElementById('student-form').classList.toggle('hidden');
-});
-
 // Add a new student on form submission
 document.getElementById('submit-student-btn').addEventListener('click', async () => {
     const name = document.getElementById('student-name').value;
@@ -16,10 +11,9 @@ document.getElementById('submit-student-btn').addEventListener('click', async ()
             body: JSON.stringify({ name, usn })
         });
 
-        // Reset form and hide it
+        // Reset form fields
         document.getElementById('student-name').value = '';
         document.getElementById('student-usn').value = '';
-        document.getElementById('student-form').classList.add('hidden');
 
         // Add the student to the table directly
         addStudentToTable({ name, usn });

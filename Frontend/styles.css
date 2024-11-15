@@ -11,14 +11,9 @@ h1 {
     color: #333;
 }
 
-#add-student-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
+#date-selector {
+    margin: 20px 0;
+    font-size: 16px;
 }
 
 #student-form {
@@ -28,10 +23,8 @@ h1 {
     background-color: #fff;
     display: flex;
     gap: 10px;
-}
-
-.hidden {
-    display: none;
+    width: 80%;
+    justify-content: center;
 }
 
 input[type="text"], input[type="date"] {
